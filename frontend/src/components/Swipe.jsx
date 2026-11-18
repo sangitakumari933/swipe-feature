@@ -1,5 +1,4 @@
 import React from "react";
-import TinderCard from "react-tinder-card";
 import { useState, useRef } from "react";
 
 const iprofiles = [
