@@ -3,9 +3,11 @@ import Swipe from "../components/Swipe.jsx";
 
 const Explore = () => {
   return (
-    <div>
-      <Swipe></Swipe>
-    </div>
+    <>
+     <Swipe></Swipe>
+    </>
+     
+ 
   );
 };
 
