@@ -145,7 +145,7 @@ function Swipe() {
         </h1>
 
         <button
-          onClick={() => setView(view === "feed" ? "matches" : "feed")}
+          onClick={() => setView( "matches")}
           className={`relative p-2.5 rounded-full shadow-sm transition-all ${
             view === "matches"
               ? "bg-pink-500 text-white"
@@ -225,30 +225,41 @@ function Swipe() {
                       </p>
                       <p className="text-white/90 text-sm mb-6">{person.bio}</p>
 
-                      <div className="flex justify-center gap-8 z-50 pointer-events-auto pb-2">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (isTopCard) triggerSwipe("DISLIKE");
-                          }}
-                          className={`w-16 h-16 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg text-red-400 hover:bg-red-500/80 hover:text-white hover:border-red-500 transition-all ${!isTopCard ? "opacity-50 cursor-not-allowed pointer-events-none" : ""}`}
-                        >
-                          <X size={32} strokeWidth={2.5} />
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (isTopCard) triggerSwipe("LIKE");
-                          }}
-                          className={`w-16 h-16 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg text-pink-500 hover:bg-pink-400 hover:text-pink-200 hover:border-pink-100 transition-all ${!isTopCard ? "opacity-50 cursor-not-allowed pointer-events-none" : ""}`}
-                        >
-                          <Heart
-                            size={28}
-                            strokeWidth={2.5}
-                            className="fill-current"
-                          />
-                        </button>
-                      </div>
+                      {!isMobile && (
+                        <div className="flex justify-center gap-8 z-50 pointer-events-auto pb-1">
+                          <button
+                            type="button"
+                            disabled={!isTopCard || Boolean(decision)}
+                            // onPointerDown={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (isTopCard) triggerSwipe("pass");
+                            }}
+                            aria-label="Pass"
+                            className={`w-16 h-16 flex items-center justify-center bg-white/15 backdrop-blur-md rounded-full border border-white/25 shadow-lg text-rose-400 hover:bg-rose-500 hover:text-white hover:border-rose-500 hover:scale-105 active:scale-95 transition-all ${
+                              !isTopCard ? "opacity-40 pointer-events-none" : ""
+                            }`}
+                          >
+                            <X size={32} strokeWidth={2.5} />
+                          </button>
+
+                          <button
+                            type="button"
+                            disabled={!isTopCard || Boolean(decision)}
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (isTopCard) triggerSwipe("like");
+                            }}
+                            aria-label="Like"
+                            className={`w-16 h-16 flex items-center justify-center bg-white/15 backdrop-blur-md rounded-full border border-white/25 shadow-lg text-pink-400 hover:bg-pink-500 hover:text-white hover:border-pink-500 hover:scale-105 active:scale-95 transition-all ${
+                              !isTopCard ? "opacity-40 pointer-events-none" : ""
+                            }`}
+                          >
+                            <Heart size={28} strokeWidth={2.5} className="fill-current" />
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );

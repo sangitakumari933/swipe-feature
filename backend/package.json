@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js",
-    "refresh":"nodemon server.js && node users.js"
+    "refresh":"nodemon server.js && node users.js",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

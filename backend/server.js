@@ -17,8 +17,7 @@ dotenv.config({
 //instialize socket.io server
 app.use(
   cors({
-    origin: ["http://localhost:5175", "https://chat-ease-client.vercel.app"],
-    credentials: true,
+    origin: ["http://localhost:5173", "https://swipe-feature-lj5d-flame.vercel.app/"],
   }),
 );
 
